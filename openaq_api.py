@@ -32,4 +32,6 @@ header, queens_near_road = api.measurements(location='Queens Near-road', limit=1
 qnr = pd.json_normalize(queens_near_road['results']) #(17689, 10)
 
 df = pd.concat([manhattan, bronx_is52, queens, brooklyn, bronx_is74, qnr])
+df['date.utc'] = df['date.utc'].str.replace('Z', '').str.replace('T', ' ')
+df['date.local'] = df['date.local'].str.rsplit('-', 1, expand=True).iloc[:, 0].str.replace('T', ' ')
 df.to_csv('NY_openaq.csv', index=None)
