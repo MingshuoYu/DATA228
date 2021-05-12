@@ -22,9 +22,4 @@ df = df.dropna(axis = 0)
 df = df[(df['pickup_time'] > '2019-12-31') \
           & (df['pickup_time'] < '2021-01-01')]
 
-zones = pd.read_csv('taxi_zone_lookup.csv')
-
-taxi = df.join(zones.set_index('LocationID'), 
-               on = 'PULocationID')
-taxi = taxi.join(zones.set_index('LocationID'), 
-                 on = 'DOLocationID', rsuffix = '_dropoff')
+df.to_csv('yellow_tripdata_2020.csv')
