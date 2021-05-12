@@ -23,3 +23,8 @@ df = df[(df['pickup_time'] > '2019-12-31') \
           & (df['pickup_time'] < '2021-01-01')]
 
 df.to_csv('yellow_tripdata_2020.csv')
+
+
+hv = pd.read_csv('fhvhv_tripdata_2020-01.csv')
+hv.SR_Flag = hv.SR_Flag.fillna(0)
+hv.to_csv('fhvhv_data_2020-01.csv')
